@@ -820,7 +820,7 @@ with tab4:
         cols_sc = [sc_p[:, 0], sc_p[:, 1], sc_p[:, 2]]
         etiq = ["Horas\n(1-30)", "Asistencia\n(40-100%)", "Nota\n(2-20)"]
 
-bp1 = ax1.boxplot(cols_raw, patch_artist=True)
+        bp1 = ax1.boxplot(cols_raw, patch_artist=True)
         ax1.set_xticks([1, 2, 3])
         ax1.set_xticklabels(etiq)
         for patch, c in zip(bp1["boxes"], ["#38bdf8", "#e5c890", "#10b981"]):
