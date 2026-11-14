@@ -820,20 +820,21 @@ with tab4:
         cols_sc = [sc_p[:, 0], sc_p[:, 1], sc_p[:, 2]]
         etiq = ["Horas\n(1-30)", "Asistencia\n(40-100%)", "Nota\n(2-20)"]
 
-        bp1 = ax1.boxplot(cols_raw, labels=etiq, patch_artist=True)
+bp1 = ax1.boxplot(cols_raw, patch_artist=True)
+        ax1.set_xticks([1, 2, 3])
+        ax1.set_xticklabels(etiq)
         for patch, c in zip(bp1["boxes"], ["#38bdf8", "#e5c890", "#10b981"]):
             patch.set_facecolor(c)
             patch.set_alpha(0.6)
         ax1.set_title("SIN Normalizar: Asistencia domina la escala")
         ax1.set_ylabel("Escala Original")
 
-        bp2 = ax2.boxplot(cols_sc, labels=["Horas (Z)", "Asistencia (Z)", "Nota (Z)"], patch_artist=True)
+        bp2 = ax2.boxplot(cols_sc, patch_artist=True)
+        ax2.set_xticks([1, 2, 3])
+        ax2.set_xticklabels(["Horas (Z)", "Asistencia (Z)", "Nota (Z)"])
         for patch, c in zip(bp2["boxes"], ["#38bdf8", "#e5c890", "#10b981"]):
             patch.set_facecolor(c)
             patch.set_alpha(0.6)
-        ax2.axhline(0, color="#f4f4f6", linestyle="--", linewidth=0.9, alpha=0.5)
-        ax2.set_title("CON StandardScaler: Media=0, Desv=1")
-        ax2.set_ylabel("Unidades Estándar (Z-Score)")
 
         aplicar_estilo_grafico(fig, np.array([ax1, ax2]))
         graficos["p17"] = fig_to_bytes(fig)
